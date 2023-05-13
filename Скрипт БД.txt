@@ -1,0 +1,63 @@
+create table Пациент(
+Номер_Пациента int primary key GENERATED ALWAYS AS IDENTITY,
+Имя varchar(40) NOT NULL,
+Фамилия varchar(40) NOT NULL,
+Отчество varchar(40) NOT NULL,
+Логин varchar(40) UNIQUE NOT NULL,
+Пароль varchar(40) NOT NULL,
+E_mail varchar(50) UNIQUE NOT NULL,
+Номер_Телефона varchar(40) UNIQUE NOT NULL,
+Пол varchar(7) NOT NULL,
+Дата_Рождения date NOT NULL,
+Адрес varchar(120) NOT NULL,
+Статус varchar(120) NOT NULL,
+Краткая_Информация varchar(400) NOT NULL,
+Фотография BYTEA)
+
+create table Персонал(
+Номер_Сотрудника int primary key GENERATED ALWAYS AS IDENTITY,
+Имя varchar(40) NOT NULL,
+Фамилия varchar(40) NOT NULL,
+Отчество varchar(40) NOT NULL,
+Логин varchar(30) NOT NULL UNIQUE,
+Пароль varchar(40) NOT NULL,
+E_mail varchar(50) NOT NULL UNIQUE,
+Номер_Телефона varchar(40) NOT NULL UNIQUE,
+Пол varchar(7) NOT NULL default 'Мужской',
+Дата_Рождения date NOT NULL,
+Адрес varchar(120) NOT NULL,
+Краткая_Информация varchar(400) NOT NULL,
+Фотография BYTEA)
+
+create table Список_Диагнозов(
+Полное_Название_Диагноза varchar(300) NOT NULL primary key )
+
+create table Журнал_Посещений(
+Номер_Записи int primary key GENERATED ALWAYS AS IDENTITY,
+Дата date NOT NULL,
+FK_Номер_Пациента int REFERENCES Пациент (Номер_Пациента) NOT NULL,
+FK_Номер_Сотрудника int REFERENCES Персонал (Номер_Сотрудника) NOT NULL,
+Жалобы varchar(800) NOT NULL,
+Назначенное_Лечение varchar(800) NOT NULL,
+Диагноз varchar(300) REFERENCES Список_Диагнозов (Полное_Название_Диагноза) NOT NULL)
+
+create table Справки(
+Номер_Справки int primary key GENERATED ALWAYS AS IDENTITY,
+Наименование_Учреждения varchar(600) NOT NULL,
+Выдана_Кому varchar(70) not null,
+Год_Рождения date not null,
+Диагноз varchar(300) REFERENCES Список_Диагнозов (Полное_Название_Диагноза) NOT NULL,
+Дата_Выдачи date not null)
+
+create table Лекарства(
+Номер_Лекарства int primary key GENERATED ALWAYS AS IDENTITY,
+Серийный_Номер varchar(90) NOT NULL,
+Полное_Название varchar(250) NOT NULL,
+Количество int NOT NULL)
+
+Запросы:
+select column_name,column_default,data_type
+from INFORMATION_SCHEMA.COLUMNS
+WHERE table_name = 'Лекарства';
+
+select * from Лекарства

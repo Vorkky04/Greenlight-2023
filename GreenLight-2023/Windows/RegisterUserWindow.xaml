@@ -1,0 +1,31 @@
+﻿<Window x:Class="GreenLight_2023.Windows.RegisterUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GreenLight_2023.Windows"
+        mc:Ignorable="d"
+        Title="RegisterUserWindow" Height="840" Width="1400" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="Transparent">
+    <Grid OpacityMask="#FFBC1010">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Border CornerRadius="25">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF3A8003" Offset="0.264"/>
+                    <GradientStop x:Name="AnimationColor3" Color="#FF97E45A" Offset="0.905"/>
+                    <GradientStop Color="#FF97E45A" Offset="0.858"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Border Margin="20 70 20 20" CornerRadius="25" Background="White"/>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0" Content="Регистрация" FontSize="48" FontFamily="Franklin Gothic Demi Cond" Foreground="White" />
+            </Grid>
+        </Border>
+        <Image Name="icon_Exit2" Cursor="Hand" Source="/Resources/Images/icon_Exit.png" MouseLeftButtonDown="icon_Exit2_MouseLeftButtonDown" HorizontalAlignment="Right" Margin="0 25 25 0" Width="35" VerticalAlignment="Top" Height="35"/>
+
+    </Grid>
+</Window>
